@@ -1,13 +1,13 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import {NavigationContainer, useLinkProps} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {appCalculadora} from './components/calculator/index';
-import {historialCalculadora} from './components/history/index';
+import AppCalculadora from './components/AppCalculadora';
+import HistorialCalculadora from './components/HistorialCalculadora';
 
 const STACK = createStackNavigator();
 
-function appTrainingMobile() {
+const AppTrainingMobile=() =>{
   return (
     <NavigationContainer>
       <STACK.Navigator
@@ -27,7 +27,7 @@ function appTrainingMobile() {
           options={{
             title: 'CALCULADORA',
           }}
-          component={appCalculadora}
+          component={AppCalculadora}
         />
 
         <STACK.Screen
@@ -35,11 +35,11 @@ function appTrainingMobile() {
           options={{
             title: 'HISTORIAL',
           }}
-          component={historialCalculadora}
+          component={HistorialCalculadora}
         />
       </STACK.Navigator>
     </NavigationContainer>
   );
 }
 
-export default appTrainingMobile;
+export default AppTrainingMobile;

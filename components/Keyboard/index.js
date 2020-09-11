@@ -1,9 +1,10 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import stylesbuttons from '../buttons/styles';
-import {BotonesTeclado, TextoBotonFuncional} from '../buttons/index';
+import BotonesTeclado from '../BotonesTeclado';
+import TextoBotonFuncional from '../TextoBotonFuncional'
 
-const PantallaTeclado = (props) => {
+const Keyboard = (props) => {
   const OPERACIONES = ['+', '-', 'x', '/'];
   const TECLADONUMERAL = [
     [7, 4, 1],
@@ -14,48 +15,48 @@ const PantallaTeclado = (props) => {
     <View style={stylesbuttons.containerBotones}>
       <View style={stylesbuttons.columnaBotones}>
         <BotonesTeclado
-          botonesAasignar={TECLADONUMERAL[0]}
+          botonesAAsignar={TECLADONUMERAL[0]}
           estiloBoton={stylesbuttons.Botonnumero}
           estiloTexto={stylesbuttons.textoboton}
-          funcion={props.arrayNumerosDeOperacion}
+          alPresionar={props.arrayNumerosDeOperacion}
         />
 
         <TextoBotonFuncional
           estiloBoton={stylesbuttons.botondecimal_signo}
           estiloTexto={stylesbuttons.textobotondecimal_signo}
-          funcion={props.cambiarSigno}
+          alPresionar={props.cambiarSigno}
           texto="+/-"
         />
       </View>
       <View style={stylesbuttons.columnaBotones}>
         <BotonesTeclado
-          botonesAasignar={TECLADONUMERAL[1]}
+          botonesAAsignar={TECLADONUMERAL[1]}
           estiloBoton={stylesbuttons.Botonnumero}
           estiloTexto={stylesbuttons.textoboton}
-          funcion={props.arrayNumerosDeOperacion}
+          alPresionar={props.arrayNumerosDeOperacion}
         />
       </View>
       <View style={stylesbuttons.columnaBotones}>
         <BotonesTeclado
-          botonesAasignar={TECLADONUMERAL[2]}
+          botonesAAsignar={TECLADONUMERAL[2]}
           estiloBoton={stylesbuttons.Botonnumero}
           estiloTexto={stylesbuttons.textoboton}
-          funcion={props.arrayNumerosDeOperacion}
+          alPresionar={props.arrayNumerosDeOperacion}
         />
         <BotonesTeclado
-          botonesAasignar={['.']}
+          botonesAAsignar={['.']}
           estiloBoton={stylesbuttons.botondecimal_signo}
           estiloTexto={stylesbuttons.textobotondecimal_signo}
-          funcion={props.arrayNumerosDeOperacion}
+          alPresionar={props.arrayNumerosDeOperacion}
         />
       </View>
 
       <View style={stylesbuttons.columnaBotones}>
         <BotonesTeclado
-          botonesAasignar={OPERACIONES}
+          botonesAAsignar={OPERACIONES}
           estiloBoton={stylesbuttons.botonoperacion}
           estiloTexto={stylesbuttons.textoboton}
-          funcion={props.funcionOperacion}
+          alPresionar={props.funcionOperacion}
         />
         <TouchableOpacity
           style={stylesbuttons.botonoperacion}
@@ -67,4 +68,4 @@ const PantallaTeclado = (props) => {
   );
 };
 
-export {PantallaTeclado};
+export default Keyboard;

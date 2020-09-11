@@ -3,7 +3,7 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import stylesbuttons from '../buttons/styles';
 
-function historialCalculadora({navigation}) {
+function HistorialCalculadora({navigation}) {
   return (
     <View style={stylesbuttons.pantallaHistorial}>
       <TouchableOpacity
@@ -15,4 +15,4 @@ function historialCalculadora({navigation}) {
   );
 }
 
-export {historialCalculadora};
+export default HistorialCalculadora;

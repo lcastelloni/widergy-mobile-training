@@ -1,21 +1,21 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import stylesbuttons from '../buttons/styles';
-import {TextoBotonFuncional} from '../buttons/index';
+import TextoBotonFuncional from '../TextoBotonFuncional'
 
-const PantallaBotonesFuncionales = (props) => {
+const BotonesFuncionales = (props) => {
   return (
     <View style={stylesbuttons.divisorPantallaBotones}>
       <TextoBotonFuncional
         estiloBoton={stylesbuttons.botonesborrado}
         estiloTexto={stylesbuttons.textobotonborrado}
-        funcion={props.Limpiarpantalla}
+        alPresionar={props.Limpiarpantalla}
         texto="Delete"
       />
       <TextoBotonFuncional
         estiloBoton={stylesbuttons.botonesborrado}
         estiloTexto={stylesbuttons.textobotonborrado}
-        funcion={props.Borrarultimocaracter}
+        alPresionar={props.Borrarultimocaracter}
         texto="&#60;&#60;"
       />
       <TouchableOpacity
@@ -27,4 +27,4 @@ const PantallaBotonesFuncionales = (props) => {
   );
 };
 
-export {PantallaBotonesFuncionales};
+export default BotonesFuncionales;

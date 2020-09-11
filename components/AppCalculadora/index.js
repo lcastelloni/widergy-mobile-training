@@ -1,12 +1,12 @@
 import 'react-native-gesture-handler';
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import stylesscreen from '../middlescreen/styles';
-import {PantallaBotonesFuncionales} from '../middlescreen/index';
-import {PantallaTeclado} from '../keyboard/index';
-import {PantallaResultado} from '../resultscreen/index';
+import stylesfuncbuttons from '../BotonesFuncionales/styles';
+import BotonesFuncionales from '../BotonesFuncionales';
+import Keyboard from '../Keyboard/';
+import OperationResult from '../OperationResult';
 
-class appCalculadora extends Component {
+class AppCalculadora extends Component {
   constructor() {
     super();
     this.state = {
@@ -165,19 +165,19 @@ class appCalculadora extends Component {
     const {navigation} = this.props;
 
     return (
-      <View style={stylesscreen.container}>
-        <PantallaResultado
+      <View style={stylesfuncbuttons.container}>
+        <OperationResult
           textoOperacion={this.state.textoOperacion}
           textoResultado={this.state.textoResultado}
         />
 
-        <PantallaBotonesFuncionales
+        <BotonesFuncionales
           Limpiarpantalla={this.limpiarPantalla}
           Borrarultimocaracter={this.borrarUltimoCaracter}
           Rutas={navigation}
         />
 
-        <PantallaTeclado
+        <Keyboard
           arrayNumerosDeOperacion={this.arrayNumerosDeOperacion}
           cambiarSigno={this.cambiarSigno}
           funcionOperacion={this.funcionOperacion}
@@ -188,4 +188,4 @@ class appCalculadora extends Component {
   }
 }
 
-export {appCalculadora};
+export default AppCalculadora;
