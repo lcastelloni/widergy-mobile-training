@@ -4,8 +4,40 @@ const styles = StyleSheet.create({
   pantallaHistorial: {
     backgroundColor: '#19191b',
     flex: 1,
+    alignItems: 'center',
+  },
+
+  scrollView: {
+    backgroundColor: '#19191b',
+    flex: 1,
+  },
+
+  botonBorrarExpresion:{
+    margin:4,
+    width: 50,
+    height: 50,
+    backgroundColor: '#a0091a',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+  },
+
+  textoBotonEditarExpresion:{
+    fontSize: 37,
+    fontWeight: 'bold',
+    color: '#bdc6c2',
+  },
+
+  containerBotonesHomeBorrado: {
+    margin: 8,
+    flex: 0.3,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  containerListaExpresiones: {
+    flex: 0.8,
+    justifyContent: 'center',
   },
 
   containerBotones: {
@@ -46,7 +78,7 @@ const styles = StyleSheet.create({
   },
 
   botonesborrado: {
-    width: 130,
+    width: 100,
     height: 60,
     backgroundColor: '#a0071a',
     alignItems: 'center',
@@ -55,7 +87,7 @@ const styles = StyleSheet.create({
   },
 
   botonhistorial: {
-    width: 130,
+    width: 100,
     height: 60,
     backgroundColor: '#201b3d',
     alignItems: 'center',
@@ -64,13 +96,25 @@ const styles = StyleSheet.create({
   },
 
   botonhome: {
-    width: 200,
+    margin: 5,
+    width: 230,
     height: 60,
     backgroundColor: '#201b3d',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 15,
   },
+
+  botonBorrarHistorial: {
+    margin: 5,
+    width: 230,
+    height: 60,
+    backgroundColor: '#a0071a',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 15,
+  },
+
 
   botonoperacion: {
     width: 70,
@@ -105,6 +149,28 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#bdc6c2',
   },
+
+  containerExpresion: {
+    margin:7,
+    width: 355,
+    height: 70,
+    backgroundColor: '#3a3c58',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    flexDirection:'row',
+  },
+
+  containerTextoExpresion:{
+    flex: 0.7,
+  },
+
+  containerBotonesExpresion:{
+    flex: 0.24,
+    alignItems:'flex-end'
+  }
+
+
 });
 
 export default styles;

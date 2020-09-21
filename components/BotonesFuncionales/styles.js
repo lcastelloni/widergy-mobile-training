@@ -6,6 +6,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  textoAlerta: {
+    fontSize: 17,
+    fontWeight: 'bold',
+  },
+
   pantallaCalculadora: {
     flex: 0.3,
     backgroundColor: '#19191b',
