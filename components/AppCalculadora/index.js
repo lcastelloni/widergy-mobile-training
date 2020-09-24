@@ -1,23 +1,21 @@
 import 'react-native-gesture-handler';
-import React, {Component} from 'react';
-import {View} from 'react-native';
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import { connect } from 'react-redux';
+
 import stylesfuncbuttons from '../BotonesFuncionales/styles';
 import BotonesFuncionales from '../BotonesFuncionales';
 import Keyboard from '../Keyboard/';
 import OperationResult from '../OperationResult';
-import {addExpression} from '../../redux/actions/index'
-import AlertMessage from '../AlertMessage'
-import API from '../../API'
+import { addExpression } from '../../redux/actions/index';
+import AlertMessage from '../AlertMessage';
+import API from '../../API';
 
-
-const loadExpressions = async (store) => {
-  const responses = await API.get('/questions')
-      responses.data.map( (response) =>
-      store.dispatch(addExpression(response.expression,response.id)))
-      return responses.data.slice(-1)[0]
-}
-
+const loadExpressions = async store => {
+  const responses = await API.get('/questions');
+  responses.data.map(response => store.dispatch(addExpression(response.expression, response.id)));
+  return responses.data.slice(-1)[0];
+};
 
 class AppCalculadora extends Component {
   constructor(props) {
@@ -30,15 +28,15 @@ class AppCalculadora extends Component {
       operacionEnCurso: '',
       idExpression: 0,
       visible: false,
-      message:'',
+      message: '',
     };
   }
 
-  componentDidMount(){
-    loadExpressions(this.props).then(data => this.setState({idExpression: data.id}))
+  componentDidMount() {
+    loadExpressions(this.props).then(data => this.setState({ idExpression: data.id }));
   }
 
-  arrayNumerosDeOperacion = (numero) => {
+  arrayNumerosDeOperacion = numero => {
     if (!this.state.operacionEnCurso) {
       this.setState({
         textoOperacion: this.state.textoOperacion + numero,
@@ -52,19 +50,17 @@ class AppCalculadora extends Component {
     }
   };
 
-  funcionOperacion = (tipo_de_operacion) => {
+  funcionOperacion = tipo_de_operacion => {
     if (!this.state.primerNumero) {
       return;
     } else if (!this.state.operacionEnCurso) {
       this.setState({
-        textoOperacion:
-          this.state.textoOperacion + ' ' + tipo_de_operacion + ' ',
+        textoOperacion: this.state.textoOperacion + ' ' + tipo_de_operacion + ' ',
         operacionEnCurso: tipo_de_operacion,
       });
     } else if (this.state.operacionEnCurso && !this.state.segundoNumero) {
       this.setState({
-        textoOperacion:
-          this.state.textoOperacion.slice(0, -2) + tipo_de_operacion + ' ',
+        textoOperacion: this.state.textoOperacion.slice(0, -2) + tipo_de_operacion + ' ',
         operacionEnCurso: tipo_de_operacion,
       });
     } else {
@@ -72,11 +68,8 @@ class AppCalculadora extends Component {
     }
   };
 
-  resultadoOperacion = (continuarOperacion) => {
-    if (
-      !this.state.primerNumero ||
-      (this.state.operacionEnCurso && !this.state.segundoNumero)
-    ) {
+  resultadoOperacion = continuarOperacion => {
+    if (!this.state.primerNumero || (this.state.operacionEnCurso && !this.state.segundoNumero)) {
       return; // Devuelve nada si se presiona la tecla "=" sin haber ingresado nada
     } else if (this.state.primerNumero && !this.state.operacionEnCurso) {
       this.setState({
@@ -144,27 +137,25 @@ class AppCalculadora extends Component {
     }
   };
 
-  saveToApiary = async (expression, indexExpression) =>{
-    const response = await API.post('/questions',{ id: indexExpression, expression: expression })
+  saveToApiary = async (expression, indexExpression) => {
+    const response = await API.post('/questions', { id: indexExpression, expression: expression });
     this.setState({
-      visible : true,
-      message: response.data.message
+      visible: true,
+      message: response.data.message,
     });
-  }
+  };
 
-
-  handleSavedExpression =()=>{
-    if(this.state.primerNumero){
-      const expression = this.state.primerNumero + ' ' +
-      this.state.operacionEnCurso + ' '+
-      this.state.segundoNumero;
-      this.state.idExpression = this.state.idExpression +1;  
-      this.props.dispatch(addExpression(expression,this.state.idExpression));
-      this.saveToApiary(expression,this.state.idExpression);
+  handleSavedExpression = () => {
+    if (this.state.primerNumero) {
+      const expression =
+        this.state.primerNumero + ' ' + this.state.operacionEnCurso + ' ' + this.state.segundoNumero;
+      this.state.idExpression = this.state.idExpression + 1;
+      this.props.dispatch(addExpression(expression, this.state.idExpression));
+      this.saveToApiary(expression, this.state.idExpression);
     }
-  }
+  };
 
-  cambioDeSigno = (numeroACambiar) => {
+  cambioDeSigno = numeroACambiar => {
     if (parseFloat(numeroACambiar) < 0) {
       numeroACambiar = numeroACambiar.slice(1);
     } else {
@@ -173,15 +164,10 @@ class AppCalculadora extends Component {
     return numeroACambiar;
   };
 
-
-
-
   cambiarSigno = () => {
     if (
       !this.state.primerNumero ||
-      (this.state.primerNumero &&
-        this.state.operacionEnCurso &&
-        !this.state.segundoNumero)
+      (this.state.primerNumero && this.state.operacionEnCurso && !this.state.segundoNumero)
     ) {
       return; // Si alguno de los numeros al que se quiere cambiar signo no existe, no se ejecuta la operacion
     } else {
@@ -192,22 +178,16 @@ class AppCalculadora extends Component {
         });
       } else {
         this.state.segundoNumero = this.cambioDeSigno(this.state.segundoNumero);
-        const POSICION = this.state.textoOperacion.indexOf(
-          this.state.operacionEnCurso,
-        );
+        const POSICION = this.state.textoOperacion.indexOf(this.state.operacionEnCurso);
         this.setState({
-          textoOperacion:
-            this.state.textoOperacion.slice(0, POSICION + 2) +
-            this.state.segundoNumero,
+          textoOperacion: this.state.textoOperacion.slice(0, POSICION + 2) + this.state.segundoNumero,
         });
       }
     }
   };
 
-  
-
   render() {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     return (
       <View style={stylesfuncbuttons.container}>
         <OperationResult
@@ -219,8 +199,8 @@ class AppCalculadora extends Component {
           Limpiarpantalla={this.limpiarPantalla}
           Borrarultimocaracter={this.borrarUltimoCaracter}
           Rutas={navigation}
-          onSaveExpression = {this.handleSavedExpression}
-          operacionAGuardar = {this.state.primerNumero}
+          onSaveExpression={this.handleSavedExpression}
+          operacionAGuardar={this.state.primerNumero}
         />
 
         <Keyboard
@@ -231,20 +211,17 @@ class AppCalculadora extends Component {
         />
 
         <AlertMessage
-          visible = {this.state.visible}
-          onDismiss ={() => this.setState({ visible: false })}
-          duration = {1500}
-          message = {this.state.message}
-          alertColor = {"#2666b1"}
+          visible={this.state.visible}
+          onDismiss={() => this.setState({ visible: false })}
+          duration={1500}
+          message={this.state.message}
+          alertColor={'#2666b1'}
         />
-
-      </View> 
-
+      </View>
     );
   }
 }
 
-const mapStateToProps = state => ({ expressions:state.expressions})
-
+const mapStateToProps = state => ({ expressions: state.expressions });
 
 export default connect(mapStateToProps)(AppCalculadora);

@@ -1,7 +1,14 @@
-import React from 'react';
-import { createStore } from 'redux'
-import HistoryApp from '../reducers'
+import { createStore, combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 
-const STORE = createStore(HistoryApp)
+import { HistoryApp, ReducerReduxForm } from '../reducers';
 
-export default STORE
+const reducers = combineReducers({
+  form: formReducer,
+  HistoryApp,
+  ReducerReduxForm,
+});
+
+const STORE = createStore(reducers);
+
+export default STORE;

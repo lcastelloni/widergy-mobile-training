@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   pantallaHistorial: {
@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  botonBorrarExpresion:{
-    margin:4,
+  botonBorrarExpresion: {
+    margin: 4,
     width: 50,
     height: 50,
     backgroundColor: '#a0091a',
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 
-  textoBotonEditarExpresion:{
+  textoBotonEditarExpresion: {
     fontSize: 37,
     fontWeight: 'bold',
     color: '#bdc6c2',
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
 
   divisorPantallaBotones: {
-    flex: 0.15,
+    flex: 0.155,
     backgroundColor: '#5f5e61',
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -78,21 +78,32 @@ const styles = StyleSheet.create({
   },
 
   botonesborrado: {
-    width: 100,
+    width: 80,
     height: 60,
     backgroundColor: '#a0071a',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 15,
+    borderRadius: 10,
+  },
+
+  botonGuardarExpresion: {
+    width: 80,
+    height: 60,
+    backgroundColor: '#a0071a',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
   },
 
   botonhistorial: {
-    width: 100,
-    height: 60,
+    width: 77,
+    height: 67,
     backgroundColor: '#201b3d',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 15,
+    borderWidth: 3,
+    borderColor: '#bdc6c2',
   },
 
   botonhome: {
@@ -114,7 +125,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 15,
   },
-
 
   botonoperacion: {
     width: 70,
@@ -151,26 +161,24 @@ const styles = StyleSheet.create({
   },
 
   containerExpresion: {
-    margin:7,
+    margin: 7,
     width: 355,
     height: 70,
     backgroundColor: '#3a3c58',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
-    flexDirection:'row',
+    flexDirection: 'row',
   },
 
-  containerTextoExpresion:{
+  containerTextoExpresion: {
     flex: 0.7,
   },
 
-  containerBotonesExpresion:{
+  containerBotonesExpresion: {
     flex: 0.24,
-    alignItems:'flex-end'
-  }
-
-
+    alignItems: 'flex-end',
+  },
 });
 
 export default styles;
