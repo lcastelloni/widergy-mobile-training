@@ -58,11 +58,12 @@ const Keyboard = (props) => {
           estiloTexto={stylesbuttons.textoboton}
           alPresionar={props.funcionOperacion}
         />
-        <TouchableOpacity
-          style={stylesbuttons.botonoperacion}
-          onPress={() => props.resultadoOperacion(0)}>
-          <Text style={stylesbuttons.textobotonigual}>=</Text>
-        </TouchableOpacity>
+        <TextoBotonFuncional
+          estiloBoton={stylesbuttons.botonoperacion}
+          estiloTexto={stylesbuttons.textobotonigual}
+          alPresionar={() => props.resultadoOperacion(0)}
+          texto="="
+        />
       </View>
     </View>
   );

@@ -8,6 +8,7 @@ const OperationResult = (props) => {
       <Text style={stylesfuncbuttons.textooperacion}>{props.textoOperacion}</Text>
 
       <Text style={stylesfuncbuttons.textoresultado}>{props.textoResultado}</Text>
+
     </View>
   );
 };

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -6,8 +6,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  textoAlerta: {
+    fontSize: 17,
+    fontWeight: 'bold',
+  },
+
   pantallaCalculadora: {
-    flex: 0.3,
+    flex: 0.29,
     backgroundColor: '#19191b',
   },
 
